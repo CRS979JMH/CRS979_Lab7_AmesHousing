@@ -63,7 +63,7 @@ if df is not None:
         OverallQual = st.sidebar.slider('Overall Quality', 1, 10, 5)
         GrLivArea = st.sidebar.number_input('Above Ground Living Area (sq ft)', min_value=500, max_value=5000, value=1500)
         GarageCars = st.sidebar.slider('Garage Cars', 0, 4, 2)
-        TotalBsmt SF = st.sidebar.number_input('Total Basement Area (sq ft)', min_value=0, max_value=3000, value=1000)
+        TotalBsmtSF = st.sidebar.number_input('Total Basement Area (sq ft)', min_value=0, max_value=3000, value=1000)
         FullBath = st.sidebar.slider('Number of Full Bathrooms', 1, 5, 2)
         YearBuilt = st.sidebar.number_input('Year Built', min_value=1800, max_value=2025, value=2000)
 
