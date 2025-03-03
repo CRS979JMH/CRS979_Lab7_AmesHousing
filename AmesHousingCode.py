@@ -13,13 +13,23 @@ def load_data():
         st.error(f"File '{file_path}' not found. Please check the path.")
         return None
     df = pd.read_excel(file_path)
+    df.columns = df.columns.str.strip()  # Remove any leading/trailing spaces in column names
     return df
 
 df = load_data()
 if df is not None:
+    st.write("Dataset columns:", df.columns.tolist())  # Debugging step
+    
     # Selecting features and target
     features = ['OverallQual', 'GrLivArea', 'GarageCars', 'TotalBsmtSF', 'FullBath', 'YearBuilt']
     target = 'SalePrice'
+    
+    # Check if required columns exist
+    missing_cols = [col for col in features if col not in df.columns]
+    if missing_cols:
+        st.error(f"Missing columns in dataset: {missing_cols}")
+        st.stop()
+    
     X = df[features]
     y = df[target]
 
@@ -80,4 +90,5 @@ if df is not None:
     # Display the prediction
     st.subheader('Predicted Housing Price ($)')
     st.write(f"${prediction[0]:,.2f}")
+
 
