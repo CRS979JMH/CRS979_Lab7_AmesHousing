@@ -22,7 +22,7 @@ if df is not None:
     
     # Selecting features and target
     features = ['Overall Qual', 'Gr Liv Area', 'Garage Cars', 'Total Bsmt SF', 'Full Bath', 'Year Built']
-    target = 'Sale Price'
+    target = 'SalePrice'
     
     # Check if required columns exist
     missing_cols = [col for col in features if col not in df.columns]
