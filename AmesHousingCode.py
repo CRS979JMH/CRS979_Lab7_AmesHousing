@@ -21,8 +21,8 @@ if df is not None:
     st.write("Dataset columns:", df.columns.tolist())  # Debugging step
     
     # Selecting features and target
-    features = ['OverallQual', 'GrLivArea', 'GarageCars', 'TotalBsmtSF', 'FullBath', 'YearBuilt']
-    target = 'SalePrice'
+    features = ['Overall Qual', 'Gr Liv Area', 'Garage Cars', 'Total Bsmt SF', 'Full Bath', 'Year Built']
+    target = 'Sale Price'
     
     # Check if required columns exist
     missing_cols = [col for col in features if col not in df.columns]
@@ -64,12 +64,12 @@ if df is not None:
         YearBuilt = st.sidebar.number_input('Year Built', min_value=1800, max_value=2025, value=2000)
 
         data = {
-            'OverallQual': OverallQual,
-            'GrLivArea': GrLivArea,
-            'GarageCars': GarageCars,
-            'TotalBsmtSF': TotalBsmtSF,
-            'FullBath': FullBath,
-            'YearBuilt': YearBuilt
+            'Overall Qual': OverallQual,
+            'Gr Liv Area': GrLivArea,
+            'Garage Cars': GarageCars,
+            'Total Bsmt SF': TotalBsmtSF,
+            'Full Bath': FullBath,
+            'Year Built': YearBuilt
         }
 
         features_df = pd.DataFrame(data, index=[0])
@@ -90,5 +90,3 @@ if df is not None:
     # Display the prediction
     st.subheader('Predicted Housing Price ($)')
     st.write(f"${prediction[0]:,.2f}")
-
-
