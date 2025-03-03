@@ -21,8 +21,8 @@ if df is not None:
     st.write("Dataset columns:", df.columns.tolist())  # Debugging step
     
     # Selecting features and target
-    features = ['OverallQual', 'GrLivArea', 'GarageCars', 'TotalBsmtSF', 'FullBath', 'YearBuilt']
-    target = 'SalePrice'
+    features = ['Overall Qual', 'Gr Liv Area', 'Garage Cars', 'Total Bsmt SF', 'Full Bath', 'Year Built']
+    target = 'Sale Price'
     
     # Check if required columns exist
     missing_cols = [col for col in features if col not in df.columns]
@@ -60,20 +60,20 @@ if df is not None:
     st.sidebar.header('Input Parameters')
 
     def user_input_features():
-        OverallQual = st.sidebar.slider('Overall Quality', 1, 10, 5)
-        GrLivArea = st.sidebar.number_input('Above Ground Living Area (sq ft)', min_value=500, max_value=5000, value=1500)
-        GarageCars = st.sidebar.slider('Garage Cars', 0, 4, 2)
-        TotalBsmtSF = st.sidebar.number_input('Total Basement Area (sq ft)', min_value=0, max_value=3000, value=1000)
-        FullBath = st.sidebar.slider('Number of Full Bathrooms', 1, 5, 2)
-        YearBuilt = st.sidebar.number_input('Year Built', min_value=1800, max_value=2025, value=2000)
+        Overall Qual = st.sidebar.slider('Overall Quality', 1, 10, 5)
+        Gr Liv Area = st.sidebar.number_input('Above Ground Living Area (sq ft)', min_value=500, max_value=5000, value=1500)
+        Garage Cars = st.sidebar.slider('Garage Cars', 0, 4, 2)
+        Total Bsmt SF = st.sidebar.number_input('Total Basement Area (sq ft)', min_value=0, max_value=3000, value=1000)
+        Full Bath = st.sidebar.slider('Number of Full Bathrooms', 1, 5, 2)
+        Year Built = st.sidebar.number_input('Year Built', min_value=1800, max_value=2025, value=2000)
 
         data = {
-            'OverallQual': OverallQual,
-            'GrLivArea': GrLivArea,
-            'GarageCars': GarageCars,
-            'TotalBsmtSF': TotalBsmtSF,
-            'FullBath': FullBath,
-            'YearBuilt': YearBuilt
+            'Overall Qual': Overall Qual,
+            'Gr Liv Area': Gr Liv Area,
+            'Garage Cars': Garage Cars,
+            'Total Bsmt SF': Total Bsmt SF,
+            'Full Bath': Full Bath,
+            'Year Built': Year Built
         }
 
         features_df = pd.DataFrame(data, index=[0])
