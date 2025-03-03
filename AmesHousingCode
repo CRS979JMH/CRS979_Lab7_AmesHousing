@@ -21,13 +21,17 @@ if df is not None:
     st.write("Dataset columns:", df.columns.tolist())  # Debugging step
     
     # Selecting features and target
-    features = ['Overall Qual', 'Gr Liv Area', 'Garage Cars', 'Total Bsmt SF', 'Full Bath', 'Year Built']
-    target = 'Sale Price'
+    features = ['OverallQual', 'GrLivArea', 'GarageCars', 'TotalBsmtSF', 'FullBath', 'YearBuilt']
+    target = 'SalePrice'
     
     # Check if required columns exist
     missing_cols = [col for col in features if col not in df.columns]
     if missing_cols:
         st.error(f"Missing columns in dataset: {missing_cols}")
+        st.stop()
+    
+    if target not in df.columns:
+        st.error(f"Column '{target}' not found in dataset. Please check the file.")
         st.stop()
     
     X = df[features]
@@ -64,12 +68,12 @@ if df is not None:
         YearBuilt = st.sidebar.number_input('Year Built', min_value=1800, max_value=2025, value=2000)
 
         data = {
-            'Overall Qual': OverallQual,
-            'Gr Liv Area': GrLivArea,
-            'Garage Cars': GarageCars,
-            'Total Bsmt SF': TotalBsmtSF,
-            'Full Bath': FullBath,
-            'Year Built': YearBuilt
+            'OverallQual': OverallQual,
+            'GrLivArea': GrLivArea,
+            'GarageCars': GarageCars,
+            'TotalBsmtSF': TotalBsmtSF,
+            'FullBath': FullBath,
+            'YearBuilt': YearBuilt
         }
 
         features_df = pd.DataFrame(data, index=[0])
@@ -90,4 +94,3 @@ if df is not None:
     # Display the prediction
     st.subheader('Predicted Housing Price ($)')
     st.write(f"${prediction[0]:,.2f}")
-
